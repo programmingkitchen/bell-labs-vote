@@ -1,8 +1,8 @@
-# Vote App 04
+# Bell Labs Vote App
 
 
 ## Summary
-Voting app for use as a demo.
+Voting app for use as a demo for Automation Boot Camp
 
 ## Notes
 This vote app uses blueprints, but the registration and login system are combined in "auth"
