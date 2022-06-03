@@ -14,6 +14,9 @@ Add admin user to be able to clear the DB via the application.
 
 ## Revision History
 
+### 6/4/22
+* Set up new repo and test.
+
 ### 6/3/22
 * Add AT&T theme and text after making it into a template.  
 * Add accordian.
