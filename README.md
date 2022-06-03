@@ -13,7 +13,16 @@ pip install -r requirementx.txt
 ## TODO
 Add admin user to be able to clear the DB via the application.
 
+Issues with talking out over the proxy to.  We dont' get the checks.
 
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+  crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+  crossorigin="anonymous">
+<link rel="stylesheet" href="/static/css/style.css">
+
+  <i class="fas fa-check fa-2x"></i>
+  
 ## Revision History
 
 ### 6/3/22
