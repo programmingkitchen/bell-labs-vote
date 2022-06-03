@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <title>Bell Labs Computing Historyr</title>
+</head>
+
+<body data-spy="scroll" data-target="#main-nav" id="home">
+
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top" id="main-nav">
+    <div class="container">
+      <a href="{{url_for('auth.login')}}" class="navbar-brand">Home</a>
+      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a href="#home" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="#audience-head-section" class="nav-link">About</a>
+          </li>
+          <li class="nav-item">
+            <a href="#explore-head-section" class="nav-link">Explore</a>
+          </li>
+          {% if current_user.is_authenticated %}
+            <li class="nav-item">
+              <a href="#home" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item px-2">
+              <a href="{{url_for('vote.vote')}}" class="nav-link active">Vote Now</a>
+            </li>
+            <li class="nav-item px-2">
+              <a href="{{url_for('stats.stats')}}" class="nav-link active">Stats</a>
+            </li>
+            <li class="nav-item px-2">
+              <a href="{{url_for('auth.logout')}}" class="nav-link active">Logout</a>
+            </li>
+          {% else %}
+            <li class="nav-item">
+              <a href="{{url_for('auth.register')}}" class="nav-link">Register</a>
+            </li>
+          {% endif %}
+      </div>
+    </div>
+  </nav>
+
+  <!-- HOME SECTION
+    style="border:5px solid #FFFFFF"
+  -->
+  <header id="home-section">
+    <div class="dark-overlay">
+      <div class="home-inner container">
+        <div class="row">
+
+          <!-- ##########   Col 1   -##########-->
+          <div class="col-lg-8 d-none d-lg-block">
+
+            <h1 class="display-4"><strong>The Heros of AT&T Bell Labs</strong>
+            </h1>
+
+            <div class="d-flex">
+              <div class="p-4 align-self-start">
+                <i class="fas fa-check fa-2x"></i>
+              </div>
+              <div class="p-4 align-self-end">
+                This educational web app interactively teaches participants the
+                history of computing. Focusing on the lives of the innovators,
+                it examines several important milestones, all originating from
+                Bell Labs roughly during the second half of the twentieth century.
+              </div>
+            </div>
+
+            <div class="d-flex">
+              <div class="p-4 align-self-start">
+                <i class="fas fa-check fa-2x"></i>
+              </div>
+              <div class="p-4 align-self-end">
+                While Bell Labs was responsible for many types of innovations,
+                this app focuses on those relating to digital computing.
+                After perusing the "Explore Section", follow the registration link
+                to register using your AT&T email.  <strong>What innovation or innovations
+                do YOU think were the most important for computing? </strong>
+                Login and vote.!! Explore the stats page to see how others weighed in.
+                You can vote as many times as you want. To find out more about
+                this web app works, see the brief video in the "About" section right below.
+              </div>
+            </div>
+          </div> <!-- Col 1-->
+
+          <!-- ##########   Col 2   ##########-->
+          <div class="col-lg-4">
+            <div class="card bg-primary text-center card-form">
+              <div class="card-body">
+
+              {# get_flashed_messages() is auto sent to the template with the flash() call #}
+                {% for mess in get_flashed_messages()  %}
+                  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close" class="fade close">
+                       <span aria-hidden="true">&times;</span>
+                    </button>
+                     {{mess}}
+                  </div>
+                {% endfor %}
+
+              <!-- BEGIN Block Content -->
+                {%block content%}
+
+                {% endblock %}
+              <!-- END Block Content -->
+
+              </div> <!-- Card body -->
+            </div> <!-- Card-->
+
+            <!-- BLOCKQUOTE WITH FOOTER -->
+            <blockquote class="blockquote text-right mt-2">
+              <p>The most creative innovations of the digital age came from those
+                who were able to connect the arts and sciences.
+              </p>
+              <footer class="blockquote-footer">Walter Isaacson
+                <cite title="Source Title">The Innovators</cite>
+              </footer>
+            </blockquote>
+
+          </div> <!-- Col 2-->
+
+        </div>  <!-- Row -->
+      </div> <!-- Container -->
+    </div> <!-- Overlay -->
+  </header>
+
+  <!-- ABOUT HEAD -->
+  <section id="audience-head-section" class="bg-primary">
+    <div class="container">
+      <div class="row">
+        <div class="col text-center py-5">
+          <h1 class="display-4">About</h1>
+          <p class="lead"> See the short video below for a demo of how this web app works.</p>
+          <br>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CREATE SECTION -->
+  <section id="audience-section" class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 order-2">
+          <!-- <img src="img/create-section1.jpg" alt="" class="img-fluid mb-3 rounded-circle"> -->
+          <img src="/static/img/transistor.jpg" alt="" class="img-fluid mb-3">
+        </div>
+        <div class="col-md-6 order-1">
+          <p>
+            View the video to learn more about this app. Click the "Full Screen Icon" for the best
+            viewing experience.
+          </p>
+          <video width="320" height="240" controls>
+            <source src="/static/video/demo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+
+          <br>
+
+          <!--  Add an external link somwewher.
+          <p>
+          If you have trouble viewing the video on this page, follow the link
+          to see it online.
+          </p>
+          <a class="btn btn-primary" href="https://youtu.be/qJpDIkAeq1M" role="button">Link</a>
+        -->
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPLORE HEAD -->
+  <section id="explore-head-section" class="bg-primary">
+    <div class="container">
+      <div class="row">
+        <div class="col text-center py-5">
+          <h1 class="display-4">Explore</h1>
+          <p class="lead">Learn about key innovations from Bell Labs below, and
+            then login to vote on which innovation or innovations are the most
+            significant in your view.  You can vote more than once.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPLORE SECTION -->
+  <section id="explore-section" class="bg-light text-muted py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col text-center py-5">
+
+        <!-- BUTTON WITH COLLAPSE -->
+          <button class="btn btn-primary d-block mb-4" data-toggle="collapse" data-target="#collapse-btn-1">Read More</button>
+
+          <div class="collapse mb-5" id="collapse-btn-1">
+            <div class="card">
+              <div class="card-body text-left">
+                <p><strong>Scientists at Bell Labs have been responsible for almost
+                  every important technical breakthrough over the last ninety
+                  years. </strong> From the innovations that are the backbone of modern
+                  digital computing to discovering the origins of the universe,
+                  researchers at Bell Labs did it.
+                </p>
+                <p>This  web app focuses on the specific innovations that represent the
+                foundations of digital computing. Below you will find a thumbnail sketch of
+                each significant computing-related innovation as well as some information about
+                the innovators behind them.  To learn more about these topics, visit:
+                </p>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- ACCORDION -->
+          <div id="accordion">
+
+            <div class="card">
+              <div class="card-header">
+                <h5>
+                  <a href="#collapse1" data-parent="#accordion" data-toggle="collapse">
+                    Innovators not winning an award (but should have)
+                  </a>
+                </h5>
+              </div> <!-- End card header -->
+
+              <div id="collapse1" class="collapse show">
+                <div class="card-body">
+
+                  <div class="media mt-5">
+                      <img class="mr-3 align-self-center mb-5" src="/static/img/shannon1.jpg">
+                      <div class="media-body text-left">
+                          <h5>Information Theory</h5>
+                          <p><strong>Claude Shannon and Information Theory:</strong>
+                             In 1948, "A Mathematical Theory of Communication", one of the founding works
+                             in information theory, was published by Claude Shannon in the
+                             Bell System Technical Journal. It built in part on earlier work
+                             in the field by Bell researchers Harry Nyquist and Ralph Hartley,
+                             but it greatly extended these.
+                            </p>
+                            <blockquote class="blockquote text-right ml-5 p-3" style="border:1px solid #000000">
+                              <p class="mb-0">Text about this innovation. <strong>STRONG TEXT ABOUT THIS
+                                INNOVATION.</strong> Text about this innovation. </p>
+                              <footer class="blockquote-footer">Source Name
+                                <cite title="Source Title">Source Title</cite>
+                              </footer>
+                            </blockquote>
+                      </div>
+                  </div>
+                  <br>
+                  <div class="media">
+                      <img class="mr-3 align-self-center mb-5" src="/static/img/shannon2.jpg">
+                      <div class="media-body text-left">
+                          <h5>Modern Cryptography</h5>
+                          <p><strong>Claude Shannon and Modern Cryptography:</strong>
+                            In addition to Information Theory, Shannon was the founder of modern cryptography
+                            with his 1949 paper Communication Theory of Secrecy Systems.
+                          </p>
+
+
+
+
+                          <blockquote class="blockquote text-right ml-5 p-3" style="border:1px solid #000000">
+
+                            <p class="mb-0">Text about this innovation. <strong>STRONG TEXT ABOUT THIS
+                              INNOVATION.</strong> Text about this innovation. </p>
+
+                            <footer class="blockquote-footer">Source Name
+                              <cite title="Source Title">Source Title</cite>
+                            </footer>
+                          </blockquote>
+
+
+
+
+
+                      </div>
+                  </div>
+                  <br>
+
+                  <div class="media mt-5">
+                      <img class="mr-3 align-self-center mb-5" src="/static/img/mathews.jpg">
+                      <div class="media-body text-left">
+                          <h5>Electronic Music</h5>
+                          <p><strong>In 1957, Max Mathews created MUSIC, one of
+                          the first computer programs to play electronic music.</strong>
+                          In 1957, Max Mathews created MUSIC, one of the first
+                          computer programs to play electronic music.
+                        </p>
+                        <blockquote class="blockquote text-right ml-5 p-3" style="border:1px solid #000000">
+                          <p class="mb-0">Text about this innovation. <strong>STRONG TEXT ABOUT THIS
+                            INNOVATION.</strong> Text about this innovation. </p>
+                          <footer class="blockquote-footer">Source Name
+                            <cite title="Source Title">Source Title</cite>
+                          </footer>
+                        </blockquote>
+                      </div>
+                  </div>
+
+                  <div class="media mt-5">
+                      <img class="mr-3 align-self-center mb-5" src="/static/img/rochkind.jpg">
+                      <div class="media-body text-left">
+                          <h5>Source Code Control</h5>
+                          <p><strong>In 1972, Marc Rochkind invented the Source Code Control System.</strong>
+                          In 1972, Marc Rochkind invented the Source Code Control System.
+                          </p>
+                          <blockquote class="blockquote text-right ml-5 p-3" style="border:1px solid #000000">
+                            <p class="mb-0">Text about this innovation. <strong>STRONG TEXT ABOUT THIS
+                              INNOVATION.</strong> Text about this innovation. </p>
+                            <footer class="blockquote-footer">Source Name
+                              <cite title="Source Title">Source Title</cite>
+                            </footer>
+                          </blockquote>
+                      </div>
+                  </div>
+
+                  <div class="media mt-5">
+                      <img class="mr-3 align-self-center mb-5" src="/static/img/knowlton.jpg">
+                      <div class="media-body text-left">
+                          <h5>Early Computer Animation</h5>
+                          <p><strong>Frank W. Sinden, Edward E. Zajac, Kenneth C. Knowlton, and A. Michael Noll made
+                          computer-animated movies during the early to mid-1960s.
+                          Ken C. Knowlton invented the computer animation language BEFLIX. </strong>
+                          Frank W. Sinden, Edward E. Zajac, Kenneth C. Knowlton, and A. Michael Noll made
+                          computer-animated movies during the early to mid-1960s.
+                          Ken C. Knowlton invented the computer animation language BEFLIX.
+                          </p>
+                          <blockquote class="blockquote text-right ml-5 p-3" style="border:1px solid #000000">
+                            <p class="mb-0">Text about this innovation. <strong>STRONG TEXT ABOUT THIS
+                              INNOVATION.</strong> Text about this innovation. </p>
+                            <footer class="blockquote-footer">Source Name
+                              <cite title="Source Title">Source Title</cite>
+                            </footer>
+                          </blockquote>
+                      </div>
+                  </div>
+
+
+                </div> <!-- End card body -->
+              </div> <!-- End collapse 1 -->
+            </div> <!-- End card-->
+
+            <!-- BEGIN SECTION TWO -->
+            <div class="card">
+              <div class="card-header">
+                <h5>
+                  <a href="#collapse2" data-parent="#accordion" data-toggle="collapse">
+                      Innovators winning a Turing
+                  </a>
+                </h5>
+              </div>
+
+              <div id="collapse2" class="collapse">
+                <div class="card-body">
+
+                  <div class="media">
+                      <img class="mr-3 align-self-center mb-5" src="/static/img/hamming.jpg">
+                      <div class="media-body text-left">
+                          <h5>Error Detection and Correction</h5>
+                          <p><strong>In 1947, Richard Hamming invented Hamming codes for
+                             error detection and correction. For patent reasons,
+                             the result was not published until 1950.</strong> In 1947, Richard
+                             Hamming invented Hamming codes for error detection and correction.
+                             For patent reasons, the result was not published until 1950.
+                            </p>
+                            <blockquote class="blockquote text-right ml-5 p-3" style="border:1px solid #000000">
+                              <p class="mb-0">Text about this innovation. <strong>STRONG TEXT ABOUT THIS
+                                INNOVATION.</strong> Text about this innovation. </p>
+                              <footer class="blockquote-footer">Source Name
+                                <cite title="Source Title">Source Title</cite>
+                              </footer>
+                            </blockquote>
+                      </div>
+                  </div>
+
+                  <div class="media mt-5">
+                      <img class="mr-3 align-self-center mb-5" src="/static/img/kernighan.jpg">
+                      <div class="media-body text-left">
+                          <h5>The C Programming Language</h5>
+                          <p><strong>Created the C programming language and, with long-time colleague Ken Thompson,
+                             the Unix operating system.</strong>
+                             In 1972, Dennis Ritchie developed the compiled programming
+                             language C as a replacement for the interpreted language
+                              B which was then used in a worse is better rewrite of UNIX.
+                            </p>
+                            <blockquote class="blockquote text-right ml-5 p-3" style="border:1px solid #000000">
+                              <p class="mb-0">Text about this innovation. <strong>STRONG TEXT ABOUT THIS
+                                INNOVATION.</strong> Text about this innovation. </p>
+                              <footer class="blockquote-footer">Source Name
+                                <cite title="Source Title">Source Title</cite>
+                              </footer>
+                            </blockquote>
+                      </div>
+                  </div>
+
+                  <div class="media mt-5">
+                      <img class="mr-3 align-self-center mb-5" src="/static/img/ritchie.jpg">
+                      <div class="media-body text-left">
+                          <h5>UNIX</h5>
+                          <p><strong>In 1969, Dennis Ritchie and Ken Thompson
+                            created the computer operating system UNIX for the
+                            support of telecommunication switching systems as
+                            well as general purpose computing.</strong>
+                            In 1969, Dennis Ritchie and Ken Thompson created the
+                            computer operating system UNIX for the support of
+                            telecommunication switching systems as well as general purpose computing.</p>
+                            <blockquote class="blockquote text-right ml-5 p-3" style="border:1px solid #000000">
+                              <p class="mb-0">Text about this innovation. <strong>STRONG TEXT ABOUT THIS
+                                INNOVATION.</strong> Text about this innovation.
+                              </p>
+                              <footer class="blockquote-footer">Source Name
+                                <cite title="Source Title">Source Title</cite>
+                              </footer>
+                            </blockquote>
+                      </div>
+                  </div>
+
+                </div> <!-- End card body -->
+              </div> <!-- End collapse 2 -->
+            </div> <!-- End card-->
+            <!-- END SECTION TWO -->
+
+            <!-- BEGIN SECTION THREE -->
+            <div class="card">
+              <div class="card-header">
+                <h5>
+                  <a href="#collapse3" data-parent="#accordion" data-toggle="collapse">
+                    Innovators winning a Nobel Prize
+                  </a>
+                </h5>
+              </div> <!-- End card header -->
+
+              <div id="collapse3" class="collapse">
+                <div class="card-body">
+
+                  <div class="media mt-5">
+                      <img class="mr-3 align-self-center mb-5" src="/static/img/shockley.jpg">
+                      <div class="media-body text-left">
+                          <h5>The Transistor</h5>
+                          <p><strong>John Bardeen, Walter Brattain, and William Shockley and the transistor: </strong>
+                             In 1947, the transistor, probably the most important invention developed by
+                             Bell Laboratories, was invented by John Bardeen, Walter Houser Brattain,
+                             and William Bradford Shockley (and who subsequently shared the Nobel Prize in Physics in 1956).
+                          </p>
+                          <blockquote class="blockquote text-right ml-5 p-3" style="border:1px solid #000000">
+                            <p class="mb-0">Text about this innovation. <strong>STRONG TEXT ABOUT THIS
+                              INNOVATION.</strong> Text about this innovation.
+                            </p>
+                            <footer class="blockquote-footer">Source Name
+                              <cite title="Source Title">Source Title</cite>
+                            </footer>
+                          </blockquote>
+                      </div>
+                  </div>
+
+                </div> <!-- End card body -->
+              </div> <!-- End collapse 1 -->
+            </div> <!-- End card-->
+            <!-- END SECTION THREE -->
+
+            <!-- BEGIN SECTION FOUR -->
+            <div class="card">
+              <div class="card-header">
+                <h5>
+                  <a href="#collapse4" data-parent="#accordion" data-toggle="collapse">
+                    Transcending all awards
+                  </a>
+                </h5>
+              </div> <!-- End card header -->
+
+              <div id="collapse4" class="collapse">
+                <div class="card-body">
+
+                  <div class="media mt-5">
+                      <img class="mr-3 align-self-center mb-5" src="/static/img/ravi.jpg">
+                      <div class="media-body text-left">
+                          <h5>The Theory of Everything</h5>
+                          <p><strong>Narendra Ravi and the Theory of Everything: </strong>
+                             Humorous Bio Text.
+                           </p>
+                           <blockquote class="blockquote text-right ml-5 p-3" style="border:1px solid #000000">
+                             <p class="mb-0">Text about this innovation. <strong>STRONG TEXT ABOUT THIS
+                               INNOVATION.</strong> Text about this innovation. </p>
+                             <footer class="blockquote-footer">Source Name
+                               <cite title="Source Title">Source Title</cite>
+                             </footer>
+                           </blockquote>
+                      </div>
+                  </div>
+
+                </div> <!-- End card body -->
+              </div> <!-- End collapse 1 -->
+            </div> <!-- End card-->
+            <!-- END SECTION THREE -->
+
+          </div> <!-- End Accordian -->
+
+        </div> <!-- End Row -->
+      </div> <!-- End Colunm -->
+    </div> <!-- End Container -->
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="main-footer" class="bg-dark">
+    <div class="container">
+      <div class="row">
+        <div class="col text-center py-4">
+          <h3>BellLabsHistory</h3>
+          <p>Copyright &copy;
+            <span id="year"></span>
+            BellLabsHistory
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+    crossorigin="anonymous"></script>
+
+  <script>
+    // Get the current year for the copyright
+    $('#year').text(new Date().getFullYear());
+
+    // Init Scrollspy
+    $('body').scrollspy({ target: '#main-nav' });
+
+    // Smooth Scrolling
+    $("#main-nav a").on('click', function (event) {
+      if (this.hash !== "") {
+        event.preventDefault();
+
+        const hash = this.hash;
+
+        $('html, body').animate({
+          scrollTop: $(hash).offset().top
+        }, 800, function () {
+
+          window.location.hash = hash;
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>

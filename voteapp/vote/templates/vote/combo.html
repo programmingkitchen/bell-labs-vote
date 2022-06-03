@@ -1,0 +1,103 @@
+
+{% extends "base-back.html"%}
+{% block content %}
+
+  <!-- HEADER -->
+  <header id="main-header" class="py-2 bg-primary text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1>
+            <i class="fas fa-cog"></i>Vote</h1>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ACTIONS -->
+  <section id="actions" class="py-4 mb-4 bg-light">
+    <div class="container">
+      <form action="{{url_for('vote.vote')}}" method = 'POST'>
+
+        <!-- First Row -->
+        <div class="mb-3 row">
+          <!-- First Row, Col 1-->
+          <div class="col-md-6">
+            {# This hidden_tag is a CSRF security feature. #}
+            {{ form.hidden_tag() }}
+            <h1 class="display-5">Vote</h1>
+            <!-- {{form.show.label(style="list-style:none")}} -->
+            {{form.show(style="list-style:none")}}
+            <!-- {{ form.show(class='dropdown-content hide') }} -->
+            <!-- {{ form.submit() }} -->
+            <input class="btn btn-primary btn-block mt-3" type="submit" value="Cast Vote">
+          </div> <!-- End choice column -->
+
+          <!-- First Row, Col 2-->
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-header">
+                <h4>Top Recommendations</h4>
+              </div>
+              <table class="table table-sm table-striped table-hover">
+                <thead class="thead-dark">
+                  <tr>
+                    <th>Show Name</th>
+                    <th>Votes</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {%for item in results %}
+                    <tr>
+                      <td>{{item[0]}}</td>
+                      <td>{{item[1]}}</td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div> <!-- End second column, first row-->
+        </div>  <!-- End choice row (first row)-->
+      </form>
+    </div> <!-- End container -->
+  </section>
+
+  <!-- Results -->
+  <section id="results">
+    <div class="container">
+
+      <div class="row">
+        <div class="col-md-8">
+
+          <!-- Start graph-->
+          <div class="wrapper p-3" style="border:1px solid #000000">
+            <h1 class="display-4">Vote Distribution</h1>
+            <canvas id="pie-chart" width="800" height="450"></canvas>
+          </div>
+
+          <script type="text/javascript">
+            new Chart(document.getElementById("pie-chart"), {
+                type: 'pie',
+                data: {
+                  labels: {{label|safe}},
+                  datasets: [{
+                    label: "Vote Distribution",
+                    backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#f4d03f","#000066"],
+                    data: {{data}}
+                  }]
+                },
+                options: {
+                  title: {
+                    display: true,
+                    text: 'Vote Distribution'
+                  }
+                }
+            });
+          </script>
+
+        </div> <!-- End col-->
+      </div> <!-- End row-->
+    </div> <!-- End container-->
+  </section>
+
+  {% endblock %}

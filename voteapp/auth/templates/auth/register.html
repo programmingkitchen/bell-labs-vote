@@ -1,0 +1,36 @@
+{% extends "base-back.html"%}
+{% block content %}
+
+{% if form.errors %}
+  {% for field_name, field_errors in form.errors|dictsort if field_errors %}
+    {% for error in field_errors %}
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close" class="fade close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        {{ form[field_name].label }}: {{ error }}
+      </div>
+    {% endfor %}
+  {% endfor %}
+{% endif %}
+
+{% if not current_user.is_authenticated %}
+
+  <div class="jumbotron">
+    <h1>Welcome to the Registration Page!</h1>
+
+      <form action="{{url_for('auth.register')}}" method = 'POST'>
+      {# This hidden_tag is a CSRF security feature. #}
+      {{ form.hidden_tag() }}
+      {{ form.name.label }} {{ form.name() }}<br>
+      {{ form.password.label }} {{ form.password() }}<br>
+      {{ form.pass_confirm.label }} {{ form.pass_confirm() }}<br>
+      {{ form.submit() }}
+    </form>
+  </div>
+
+{% else %}
+  <h1 class="display-3">You are already registered.</h1>
+{% endif %}
+
+{% endblock %}

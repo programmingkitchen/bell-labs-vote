@@ -1,0 +1,13 @@
+[Unit]
+Description=Gunicorn instance to serve vote app
+After=network.target
+
+[Service]
+User=vagrant
+Group=www-data
+WorkingDirectory=/vagrant/VOTE-VAG/vote
+Environment="PATH=/usr/bin"
+ExecStart=/usr/local/bin/gunicorn --workers 3 --bind unix:/tmp/voteapp.sock -m 007 wsgi:app
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+    crossorigin="anonymous">
+  <!--<link rel="stylesheet" href="/static/css/style.css">-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
+    <div class="container">
+      <a href="{{url_for('main.index')}}" class="navbar-brand">BellLabsHistory</a>
+
+      <!-- THIS SETS UP THE COLLAPSABLE BUTTON ELEMENT (HAMBURGER)
+        THEN WE PUT AN UNORDERED LIST INSIDE OF A COLLAPSE DIV-->
+      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+
+
+          <!-- START LIST -->
+        <ul class="navbar-nav">
+          {% if current_user.is_authenticated %}
+            <li class="nav-item px-2">
+              <a href="{{url_for('vote.vote')}}" class="nav-link active">Vote Now</a>
+            </li>
+            <li class="nav-item px-2">
+              <a href="{{url_for('stats.stats')}}" class="nav-link">Voting Stats</a>
+            </li>
+            <li class="text-white nav-item ml-5 pl-5 pr-2 pt-2">
+              <i class="fas fa-user"></i>Welcome {{current_user.name | capitalize}}
+            </li>
+            <li class="nav-item px-2 ">
+              <a href="{{url_for('auth.logout')}}" class="nav-link">
+                <i class="fas fa-user-times"></i> Logout
+              </a>
+            </li>
+          {% endif %}
+        </ul> <!-- End List-->
+
+      </div> <!-- End NavbarCollapse-->
+    </div> <!-- End Container -->
+  </nav>   <!-- END NAV -->
+
+<!-- ###############   FLASHED MESSAGES   ###############-->
+  {# get_flashed_messages() is auto sent to the template with the flash() call #}
+    {% for mess in get_flashed_messages()  %}
+      <div class="alert alert-warning alert-dismissible fade show mb-0" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close" class="fade close">
+           <span aria-hidden="true">&times;</span>
+        </button>
+         {{mess}}
+      </div>
+    {% endfor %}
+
+  <!-- BEGIN Block Content -->
+  {%block content%}
+
+  {% endblock %}
+
+  <!-- END Block Content -->
+
+  <!-- ###############   FOOTER   ###############-->
+  <footer id="main-footer" class="bg-dark text-white mt-5 p-5">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <p class="lead text-center">
+            Copyright &copy;
+            <span id="year"></span>
+            BellLabsHistory
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
+
+
+  <script>
+    // Get the current year for the copyright
+    $('#year').text(new Date().getFullYear());
+
+    CKEDITOR.replace('editor1');
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+{% extends "base.html"%}
+{% block content %}
+
+{% if current_user.is_authenticated %}
+  <h1 class="display-4">Welcome</h1>
+  <h3>{{current_user.name|capitalize}}</h3>
+{% else %}
+  <h3>Vote Now</h3>
+  <p>Please login to cast vote.</p>
+  <form action="{{url_for('auth.login')}}" method = 'POST'>
+    {# This hidden_tag is a CSRF security feature. #}
+    {{ form.hidden_tag() }}
+    {{ form.name.label }} {{ form.name() }}<br>
+    {{ form.password.label }} {{ form.password() }}<br>
+    {{ form.submit() }}
+  </form>
+{% endif %}
+
+{% endblock %}
