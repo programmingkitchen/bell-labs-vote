@@ -52,15 +52,22 @@ pip install -r requirementx.txt
 
 * The README.md file appears to have the ability to load stylesheets and display checks. See links in the main app.
 
-## TODO
-1. Add admin user to be able to clear the DB via the application.
-
-2. When trying to load these external libraries through a proxy, we might have issues.  For example, we might not get the "checks" from Font Awesome. 
+* When trying to load these external libraries through a proxy, we might have issues.  For example, we might not get the "checks" from Font Awesome. 
 
 * Fontawesome
 * Bootstrap
 
-  
+## TODO
+1. Add admin user to be able to clear the DB via the application.
+
+2. Add a variables file so that setup_dabase does not have hard coded passwords.  Then put the .gitignore on the varialbes file, not the 
+   setup DB file. 
+
+3. After voting, the selected radio button stays selected.  Make this clear? 
+
+4. Work on user profile and password reset (separate program). 
+
+
 ## Revision History
 
 ### 6/3/22
