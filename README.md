@@ -138,3 +138,12 @@ if __name__ == '__main__':
     #app.run(debug=True, host="0.0.0.0", port=5000)
     application.run()
 ```
+
+- After removing the docs diretory which was being inspected for files and failing due to errors, changed
+"application" back to "app." 
+
+```
+Generating `gunicorn` command for 'wsgi:app'
+
+Failed to find attribute 'app' in 'wsgi'.
+```
