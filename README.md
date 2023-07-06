@@ -6,6 +6,10 @@
 
 ## Referances
 
+- Article on configuration of gunicorn and nginx
+
+https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-18-04
+
 ## TODO
 1. Add admin user to be able to clear the DB via the application.
 1. Add a variables file so that setup_dabase does not have hard coded passwords.  Then put the .gitignore on the varialbes file, not the 
@@ -115,6 +119,10 @@ from wtforms import ValidationError
 ```
 
 # Trouble
+
+- Issue running gunicorn on Windows
+https://stackoverflow.com/questions/62788628/modulenotfounderror-no-module-named-fcntl
+
 
 - original wsgi.py
 ```
