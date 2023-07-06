@@ -1,13 +1,53 @@
 # Bell Labs Vote App
 
 
-## Summary
-Voting app for use as a demo for Automation Boot Camp
+# Summary
+- Voting app for use as a demo for Demo.
 
-## Local PC directory
+## Referances
+
+## TODO
+1. Add admin user to be able to clear the DB via the application.
+1. Add a variables file so that setup_dabase does not have hard coded passwords.  Then put the .gitignore on the varialbes file, not the 
+   setup DB file. 
+1. After voting, the selected radio button stays selected.  Make this clear? 
+1. Work on user profile and password reset (separate program). 
+
+## Revision History
+| DATE        | CHANGE |
+| ----------- | ----------- |
+| 6/3/22      | Set up new repo and test. Update requirments.txt for a minimal packages. |
+| 6/2/22      | Add AT&T theme and text after making it into a template. Add accordian. Remove the rating system. |
+| 2/20/22     | Registration works, but you have to navigate to it directly and it's not formatted. Add registration link Explore option to add registration at the bottom so it's a one page. Embed video. |
+| 2/20/22     | Fixed:  You can register when you are logged in. How can a registration system be added to the Login page when it would require to "extensions?" |
+
+
+
+# Configuration 
+**Python Version**
+```
+$ python --version
+Python 3.10.7
+(flask)
+
+```
+
+**Git & Git Hub**
+
+```
+git@github.com:programmingkitchen/bell-labs-vote.git
+```
+**Local PC directory**
 ```
 /c/Users/rgran/Dropbox/PYTHON-PROGRAMS/FLASK/BELL-LABS-VOTE
 ```
+
+**Virtual Environment**
+```
+~/VENV/flask
+```
+
+# Command Cheats
 
 ## Virtual Environmet Setup (Local PC Version)
 * We are storing the virtual environments in a VENV directory and not naming them with dots.
@@ -19,74 +59,43 @@ python -m venv ~/VENV/flask
 source ~/VENV/flask/Scripts/activate
 
 deactivate
-
 ```
 ## PIP
+
 ```
+pip freeze > requirements.txt
+pip install -r requirements.txt
+
 pip install --upgrade pip &&\
 		pip install -r requirements.txt
 ```
 
-## Examples
+# Examples
+- Startup 
+
 ```
+rgran@HPPAVILION-1 MINGW64 ~/VENV/flask
+$ cd ~/Dropbox/PYTHON-PROGRAMS/FLASK/BELL-LABS-VOTE
+
 rgran@HPPAVILION-1 MINGW64 ~/Dropbox/PYTHON-PROGRAMS/FLASK/BELL-LABS-VOTE (main)
-$ source ~/VENV/flask/Scripts/activate
+$ source /c/Users/rgran/VENV/flask/Scripts/activate
 (flask)
 
+$ which gunicorn
+/c/Users/rgran/Dropbox/PYTHON-PROGRAMS/FLASK/BELL-LABS-VOTE/\Users\rgran\VENV\flask/Scripts/gunicorn
+(flask)
 
 ```
 
-## Git & Git Hub
-
-```
-git@github.com:programmingkitchen/bell-labs-vote.git
-```
-
-## NOTES
-* This vote app uses blueprints, but the registration and login system are combined in "auth"
-
-```
-pip freeze > requirements.txt
-pip install -r requirementx.txt
-```
-
-* The README.md file appears to have the ability to load stylesheets and display checks. See links in the main app.
-
-* When trying to load these external libraries through a proxy, we might have issues.  For example, we might not get the "checks" from Font Awesome. 
-
-* Fontawesome
-* Bootstrap
-
-## TODO
-1. Add admin user to be able to clear the DB via the application.
-
-2. Add a variables file so that setup_dabase does not have hard coded passwords.  Then put the .gitignore on the varialbes file, not the 
-   setup DB file. 
-
-3. After voting, the selected radio button stays selected.  Make this clear? 
-
-4. Work on user profile and password reset (separate program). 
 
 
-## Revision History
+# NOTES
+- This vote app uses blueprints, but the registration and login system are combined in "auth"
+- The README.md file appears to have the ability to load stylesheets and display checks. See links in the main app.
+- When trying to load these external libraries through a proxy, we might have issues.  For example, we might not get the "checks" from Font Awesome. 
 
-### 6/3/22
-* Set up new repo and test.
-* Update requirments.txt for a minimal packages.
-
-### 6/2/22
-* Add AT&T theme and text after making it into a template.  
-* Add accordian.
-* Remove the rating system.
-
-### 2/20/22
-Registration works, but you have to navigate to it directly and it's not formatted.
-* Add registration link.  Explore option to add registration at the bottom so it's a one page.
-* Embed video
-
-### 2/20/22
-* Fixed:  You can register when you are logged in.
-* How can a registration system be added to the Login page when it would require to "extensions?"
+- Fontawesome
+- Bootstrap
 
 
 ## All Imports
