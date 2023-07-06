@@ -44,8 +44,8 @@ If the templates have the same name, then the first one registered will be
 the one that is found.
 https://stackoverflow.com/questions/7974771/flask-blueprint-template-folder
 '''
-application.register_blueprint(main_blueprint,url_prefix="/")
-application.register_blueprint(auth_blueprint,url_prefix="/auth")
-application.register_blueprint(vote_blueprint,url_prefix="/vote")
-application.register_blueprint(stats_blueprint,url_prefix="/stats")
-application.register_blueprint(admin_blueprint,url_prefix="/admin")
+app.register_blueprint(main_blueprint,url_prefix="/")
+app.register_blueprint(auth_blueprint,url_prefix="/auth")
+app.register_blueprint(vote_blueprint,url_prefix="/vote")
+app.register_blueprint(stats_blueprint,url_prefix="/stats")
+app.register_blueprint(admin_blueprint,url_prefix="/admin")
