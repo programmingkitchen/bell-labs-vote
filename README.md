@@ -142,6 +142,11 @@ https://getbootstrap.com/docs/4.1/components/collapse/
 - No user for ftp 
 Monitoring > Log stream
 
+**SOLUTION:** Change the url from http to https like below. 
+```
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+```
 
 
 ## Issue running gunicorn on Windows
