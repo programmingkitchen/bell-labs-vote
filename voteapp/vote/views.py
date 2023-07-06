@@ -34,7 +34,6 @@ def vote():
     form = VoteForm()
     data = []
     label = []
-    rating = 0
     sql = '''select voteName, count(*) as total
     from votes
     group by voteName
@@ -57,12 +56,10 @@ def vote():
             for i in rows:
                 label.append(str(i[0]))
                 data.append(i[1])
-            rating = calculateRating()
-            return render_template('combo.html', form = form, results = rows, rating = rating, label = label, data = data)
+            return render_template('combo.html', form = form, results = rows, label = label, data = data)
         except:
             flash('Voting Error.')
-            rating = calculateRating()
-            return render_template('combo.html', form = form, results = rows, rating = rating, label = label, data = data)
+            return render_template('combo.html', form = form, results = rows, label = label, data = data)
 
     # Convert the Result Set Proxy into a normal Python list.  convert
     # the list of tuples to two separate lists since the labels property and
@@ -74,26 +71,4 @@ def vote():
     for i in rows:
         label.append(str(i[0]))
         data.append(i[1])
-    rating = calculateRating()
-    return render_template('combo.html', form = form, results = rows, rating = rating, label = label, data = data)
-
-
-    '''
-============================================================
-                        HELPER METHODS
-============================================================
-'''
-def calculateRating():
-    sql = '''select count(*) as total
-    from votes
-    '''
-    total = 0
-    resultList = db.engine.execute(sql).first()
-    for record in resultList:
-        total = record
-    rating = round(total)
-    print("RATING: ", type(total), total, file=sys.stderr)
-    if rating >=0 and rating <= 100:
-        return rating
-    if rating > 100:
-        return 100
+    return render_template('combo.html', form = form, results = rows, label = label, data = data)

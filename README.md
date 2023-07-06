@@ -28,7 +28,7 @@ http://localhost:5000/vote/vote
 ## Revision History
 | DATE        | CHANGE |
 | ----------- | ----------- |
-| 7/6/22      | Configure for deploy in Azure App Service via Git Hub Actions. Remove docs folder and put it in the directory below because something was finding the wsgi and causing error.  C:\Users\rgran\Dropbox\PYTHON-PROGRAMS\FLASK\BELL-LABS-VOTE-RESOURCES|
+| 7/6/22      | Configure for deploy in Azure App Service via Git Hub Actions. Remove docs folder and put it in the directory below because something was finding the wsgi and causing error.  C:\Users\rgran\Dropbox\PYTHON-PROGRAMS\FLASK\BELL-LABS-VOTE-RESOURCES.  Clean up rating code.|
 | 6/3/22      | Set up new repo and test. Update requirments.txt for a minimal packages. |
 | 6/2/22      | Add AT&T theme and text after making it into a template. Add accordian. Remove the rating system. |
 | 2/20/22     | Registration works, but you have to navigate to it directly and it's not formatted. Add registration link Explore option to add registration at the bottom so it's a one page. Embed video. |
@@ -143,6 +143,9 @@ https://getbootstrap.com/docs/4.1/components/collapse/
 Monitoring > Log stream
 
 **SOLUTION:** Change the url from http to https like below. 
+
+https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content?utm_source=mozilla&utm_medium=firefox-console-errors&utm_campaign=default
+
 ```
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
