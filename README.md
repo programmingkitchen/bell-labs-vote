@@ -147,3 +147,8 @@ Generating `gunicorn` command for 'wsgi:app'
 
 Failed to find attribute 'app' in 'wsgi'.
 ```
+
+- Orm error
+```
+/tmp/8db7e2fbe7f632b/antenv/lib/python3.10/site-packages/sqlalchemy/orm/query.py:196: SyntaxWarning: "is not" with a literal. Did you mean "!="?
+```
