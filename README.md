@@ -114,3 +114,15 @@ from wtforms.validators import DataRequired, Email, EqualTo
 from wtforms import ValidationError
 ```
 
+# Trouble
+
+- original wsgi.py
+```
+#!/usr/bin/python3
+#from voteapp import app
+from voteapp import application
+
+if __name__ == '__main__':
+    #app.run(debug=True, host="0.0.0.0", port=5000)
+    application.run()
+```
