@@ -12,15 +12,21 @@ https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications
 
 ## TODO
 1. After voting, the selected radio button stays selected.  Make this clear? 
-1. Add admin user to be able to clear the DB via the application.
+1. Add admin user to be able to clear the DB via the application.  Add link from the login page. 
+    - This currently works for a regular user, not just admin. How do we provide authorization to admin only. 
+    - http://localhost:5000/admin/admin
+    - Changed admin to be host/admin
+    - Working on this.  Added code, but need to look at reset page more. 
+    - Add admin menu in template.  
 1. Add a variables file so that setup_dabase does not have hard coded passwords.  Then put the .gitignore on the variables file, not the 
    setup DB file. 
 1. Work on user profile and password reset (separate program). 
-1. More "rating" code to clean up.
-    - The rating system which was eventually removed can be found here:
-     ~/Dropbox/PYTHON-PROGRAMS/FLASK/VOTE-ARCHIVE/VOTE-FINAL-TEMPLATES/VOTE-FINAL 
-
 1. Deal with this in the URL.  It should not have the double "vote"
+    - Just change the path to
+
+```
+@admin_blueprint.route('/')
+```
 
 http://localhost:5000/vote/vote
 
@@ -28,7 +34,7 @@ http://localhost:5000/vote/vote
 ## Revision History
 | DATE        | CHANGE |
 | ----------- | ----------- |
-| 7/6/22      | Configure for deploy in Azure App Service via Git Hub Actions. Remove docs folder and put it in the directory below because something was finding the wsgi and causing error.  C:\Users\rgran\Dropbox\PYTHON-PROGRAMS\FLASK\BELL-LABS-VOTE-RESOURCES.  Clean up rating code.|
+| 7/6/22      | Configure for deploy in Azure App Service via Git Hub Actions. Remove docs folder and put it in the directory below because something was finding the wsgi and causing error.  C:\Users\rgran\Dropbox\PYTHON-PROGRAMS\FLASK\BELL-LABS-VOTE-RESOURCES.  Clean up rating code.  The rating system which was eventually removed can be found here: ~/Dropbox/PYTHON-PROGRAMS/FLASK/VOTE-ARCHIVE/VOTE-FINAL-TEMPLATES/VOTE-FINAL  |
 | 6/3/22      | Set up new repo and test. Update requirments.txt for a minimal packages. |
 | 6/2/22      | Add AT&T theme and text after making it into a template. Add accordian. Remove the rating system. |
 | 2/20/22     | Registration works, but you have to navigate to it directly and it's not formatted. Add registration link Explore option to add registration at the bottom so it's a one page. Embed video. |

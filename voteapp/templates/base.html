@@ -45,6 +45,9 @@
             <li class="nav-item px-2">
               <a href="{{url_for('auth.logout')}}" class="nav-link active">Logout</a>
             </li>
+
+          <!-- else if current_user == 1 then display admin menu  -->
+
           {% else %}
             <li class="nav-item">
               <a href="{{url_for('auth.register')}}" class="nav-link">Register</a>

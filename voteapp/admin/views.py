@@ -36,10 +36,10 @@ admin_blueprint = Blueprint('admin',
                               __name__,
                               template_folder='templates/admin', static_folder='static')
 
-@admin_blueprint.route('/admin')
+@admin_blueprint.route('/')
 @login_required
 def admin():
-    myuser = current_user.get_id()
+    myuser = int(current_user.get_id())
     auth = current_user.is_authenticated
     active = current_user.is_active
     anon = current_user.is_anonymous
@@ -49,12 +49,20 @@ def admin():
     print("\nMy User: ", myuser, file=sys.stderr)
     print("\tType: ", type(myuser), file=sys.stderr)
     print("\nDefaultsType: ", myuser, auth, active, anon, file=sys.stderr)
-    return render_template('admin.html')
+    
+    if myuser == 1:
+        return render_template('admin.html')
+    else:
+        return render_template('error.html')
 
 
 @admin_blueprint.route('/clear')
 @login_required
 def clear():
     sql = '''delete from votes'''
-    resultList = db.engine.execute(sql)
-    return render_template('admin.html')
+    try:
+        resultList = db.engine.execute(sql)
+        return render_template('admin.html')
+    except:
+        print("ERROR: clearing database.", file=sys.stderr)
+        return render_template('admin.html')
