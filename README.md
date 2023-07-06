@@ -20,6 +20,11 @@ https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications
     - The rating system which was eventually removed can be found here:
      ~/Dropbox/PYTHON-PROGRAMS/FLASK/VOTE-ARCHIVE/VOTE-FINAL-TEMPLATES/VOTE-FINAL 
 
+1. Deal with this in the URL.  It should not have the double "vote"
+
+http://localhost:5000/vote/vote
+
+
 ## Revision History
 | DATE        | CHANGE |
 | ----------- | ----------- |
@@ -124,9 +129,25 @@ from wtforms import ValidationError
 
 # Trouble
 
-- Issue running gunicorn on Windows
-https://stackoverflow.com/questions/62788628/modulenotfounderror-no-module-named-fcntl
+## Accordion not working in Azure App Service but works locally
+- Accordian does not expand or collapse
+- Flash messages do not close
+- The "Read More" does open
+- Nothing in the logs
+https://getbootstrap.com/docs/4.1/components/collapse/
 
+- Suspect outbout connectivity to Java Script 
+
+- We can see the logs for the app
+- No user for ftp 
+Monitoring > Log stream
+
+
+
+## Issue running gunicorn on Windows
+https://stackoverflow.com/questions/62788628/modulenotfounderror-no-module-named-fcntl
+- We changed back from "application" to "app" and it worked so this is probably because of 
+the docs directory (see below). 
 
 - original wsgi.py
 ```
@@ -139,6 +160,7 @@ if __name__ == '__main__':
     application.run()
 ```
 
+## Docs directory causing errors because it was being inspected
 - After removing the docs diretory which was being inspected for files and failing due to errors, changed
 "application" back to "app." 
 
@@ -148,6 +170,7 @@ Generating `gunicorn` command for 'wsgi:app'
 Failed to find attribute 'app' in 'wsgi'.
 ```
 
+## ORM Error
 - Orm error
 ```
 /tmp/8db7e2fbe7f632b/antenv/lib/python3.10/site-packages/sqlalchemy/orm/query.py:196: SyntaxWarning: "is not" with a literal. Did you mean "!="?
