@@ -4,22 +4,23 @@
 # Summary
 - Voting app for use as a demo for Demo.
 
-## Referances
+## References
 
 - Article on configuration of gunicorn and nginx
 
 https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-18-04
 
 ## TODO
-1. Add admin user to be able to clear the DB via the application.
-1. Add a variables file so that setup_dabase does not have hard coded passwords.  Then put the .gitignore on the varialbes file, not the 
-   setup DB file. 
 1. After voting, the selected radio button stays selected.  Make this clear? 
+1. Add admin user to be able to clear the DB via the application.
+1. Add a variables file so that setup_dabase does not have hard coded passwords.  Then put the .gitignore on the variables file, not the 
+   setup DB file. 
 1. Work on user profile and password reset (separate program). 
 
 ## Revision History
 | DATE        | CHANGE |
 | ----------- | ----------- |
+| 7/6/22      | Configure for deploy in Azure App Service via Git Hub Actions. |
 | 6/3/22      | Set up new repo and test. Update requirments.txt for a minimal packages. |
 | 6/2/22      | Add AT&T theme and text after making it into a template. Add accordian. Remove the rating system. |
 | 2/20/22     | Registration works, but you have to navigate to it directly and it's not formatted. Add registration link Explore option to add registration at the bottom so it's a one page. Embed video. |
