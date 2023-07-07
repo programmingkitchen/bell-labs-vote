@@ -10,8 +10,18 @@
 
 https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-18-04
 
+
+# Major Revision Planned
+
+https://openai.com/blog/introducing-chatgpt-and-whisper-apis
+
+
+
 ## TODO
 1. After voting, the selected radio button stays selected.  Make this clear? 
+    - If you navigate to a different page and come back it goes to the default.
+    - If you refresh it stays on the previous choice. 
+    - Maybe direct to a page that has "Top Recommendations" and "Vote Distribution" and a button that says "Vote Again"
 1. Add admin user to be able to clear the DB via the application.  Add link from the login page. 
     - This currently works for a regular user, not just admin. How do we provide authorization to admin only. 
     - http://localhost:5000/admin/admin

@@ -14,14 +14,24 @@ from voteapp.vote.forms import VoteForm
 ============================================================
 '''
 '''
-    Vote for a musical
     Tried to grab the result list up front.  This does not work because
-    this results in neededing two threads.   We put the query inside the flow
+    this results in needing two threads.   We put the query inside the flow
     for POST and GET (2 times) to get around this.
 
     The fetchall() converts from the SQLAlchemy Resultset Proxy (we previously iterated
     using the proxy) to a normal list (or list of tuples).  Now we do normal Python/Jinja
     iteration in the template.
+
+    Default values doesn't work after the first visit to the page.  But it does after 
+    leaving the page and coming back. 
+
+    https://itecnote.com/tecnote/python-setting-default-value-after-initialization-in-selectfield-flask-wtforms/
+
+    Once an instance of the form is created, the data is bound. 
+    Changing the default after that doesn't do anything. 
+    The reason changing choices works is because it affects validation, 
+    which doesn't run until validate is called.
+
 '''
 
 vote_blueprint = Blueprint('vote',
@@ -56,6 +66,7 @@ def vote():
             for i in rows:
                 label.append(str(i[0]))
                 data.append(i[1])
+            print("End of the post, before render.", file=sys.stderr)
             return render_template('combo.html', form = form, results = rows, label = label, data = data)
         except:
             flash('Voting Error.')
