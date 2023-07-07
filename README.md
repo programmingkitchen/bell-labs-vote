@@ -28,12 +28,12 @@ https://openai.com/blog/introducing-chatgpt-and-whisper-apis
     - Changed admin to be host/admin
     - Working on this.  Added code, but need to look at reset page more. 
     - Add admin menu in template.  
+1. Format of Registration Page.
 1. Add a variables file so that setup_dabase does not have hard coded passwords.  Then put the .gitignore on the variables file, not the 
    setup DB file. 
 1. Work on user profile and password reset (separate program). 
 1. Deal with this in the URL.  It should not have the double "vote"
     - Just change the path to
-
 ```
 @admin_blueprint.route('/')
 ```

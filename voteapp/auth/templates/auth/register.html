@@ -16,6 +16,10 @@
 
 {% if not current_user.is_authenticated %}
 
+
+  <!-- HEADER -->
+  <!-- Change format here see admin/templates/auth/error.html-->
+
   <div class="jumbotron">
     <h1>Welcome to the Registration Page!</h1>
 
@@ -32,5 +36,10 @@
 {% else %}
   <h1 class="display-3">You are already registered.</h1>
 {% endif %}
+
+
+  <!-- End format here -->
+
+
 
 {% endblock %}
