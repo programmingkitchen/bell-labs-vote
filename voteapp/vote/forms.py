@@ -15,5 +15,5 @@ class VoteForm(FlaskForm):
     ('C Language', 'Kernighan & Ritchie(C)'),
     ('UNIX', 'Kernighan & Ritchie(UNIX)'),
     ('The Transitor', 'Bardeen, Brattain & Shockley (Transistor)'),
-    ('Theory of Everything', 'Theory of Everything(Narendra Ravi)')], default='Theory of Everything')
+    ('Theory of Everything', 'Theory of Everything(Dr. Jerry Robinson)')], default='Theory of Everything')
     submit = SubmitField('Vote')
