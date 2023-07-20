@@ -1,1 +1,3 @@
 setup_database.py
+*.db
+**/votes.db
