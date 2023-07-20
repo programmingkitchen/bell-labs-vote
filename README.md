@@ -1,7 +1,7 @@
 # Bell Labs Vote App
 
-
 # Summary
+
 - Voting app for use as a demo for Demo.
 
 ## References
@@ -10,50 +10,50 @@
 
 https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-18-04
 
-
 # Major Revision Planned
 
 https://openai.com/blog/introducing-chatgpt-and-whisper-apis
 
-
-
 ## TODO
-1. After voting, the selected radio button stays selected.  Make this clear? 
-    - If you navigate to a different page and come back it goes to the default.
-    - If you refresh it stays on the previous choice. 
-    - Maybe direct to a page that has "Top Recommendations" and "Vote Distribution" and a button that says "Vote Again"
-1. Add admin user to be able to clear the DB via the application.  Add link from the login page. 
-    - This currently works for a regular user, not just admin. How do we provide authorization to admin only. 
-    - http://localhost:5000/admin/admin
-    - Changed admin to be host/admin
-    - Working on this.  Added code, but need to look at reset page more. 
-    - Add admin menu in template.  
+
+1. After voting, the selected radio button stays selected. Make this clear?
+   - If you navigate to a different page and come back it goes to the default.
+   - If you refresh it stays on the previous choice.
+   - Maybe direct to a page that has "Top Recommendations" and "Vote Distribution" and a button that says "Vote Again"
+1. Add admin user to be able to clear the DB via the application. Add link from the login page.
+   - This currently works for a regular user, not just admin. How do we provide authorization to admin only.
+   - http://localhost:5000/admin/admin
+   - Changed admin to be host/admin
+   - Working on this. Added code, but need to look at reset page more.
+   - Add admin menu in template.
 1. Format of Registration Page.
-1. Add a variables file so that setup_dabase does not have hard coded passwords.  Then put the .gitignore on the variables file, not the 
-   setup DB file. 
-1. Work on user profile and password reset (separate program). 
-1. Deal with this in the URL.  It should not have the double "vote"
-    - Just change the path to
+1. Add a variables file so that setup_dabase does not have hard coded passwords. Then put the .gitignore on the variables file, not the
+   setup DB file.
+1. Work on user profile and password reset (separate program).
+1. Deal with this in the URL. It should not have the double "vote"
+   - Just change the path to
+
 ```
 @admin_blueprint.route('/')
 ```
 
 http://localhost:5000/vote/vote
 
-
 ## Revision History
-| DATE        | CHANGE |
-| ----------- | ----------- |
-| 7/6/22      | Configure for deploy in Azure App Service via Git Hub Actions. Remove docs folder and put it in the directory below because something was finding the wsgi and causing error.  C:\Users\rgran\Dropbox\PYTHON-PROGRAMS\FLASK\BELL-LABS-VOTE-RESOURCES.  Clean up rating code.  The rating system which was eventually removed can be found here: ~/Dropbox/PYTHON-PROGRAMS/FLASK/VOTE-ARCHIVE/VOTE-FINAL-TEMPLATES/VOTE-FINAL  |
-| 6/3/22      | Set up new repo and test. Update requirments.txt for a minimal packages. |
-| 6/2/22      | Add AT&T theme and text after making it into a template. Add accordian. Remove the rating system. |
-| 2/20/22     | Registration works, but you have to navigate to it directly and it's not formatted. Add registration link Explore option to add registration at the bottom so it's a one page. Embed video. |
-| 2/20/22     | Fixed:  You can register when you are logged in. How can a registration system be added to the Login page when it would require to "extensions?" |
 
+| DATE    | CHANGE                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 7/20/23 | Configure for AT&T presentation.                                                                                                                                                                                                                                                                                                                                                                                          |
+| 7/6/22  | Configure for deploy in Azure App Service via Git Hub Actions. Remove docs folder and put it in the directory below because something was finding the wsgi and causing error. C:\Users\rgran\Dropbox\PYTHON-PROGRAMS\FLASK\BELL-LABS-VOTE-RESOURCES. Clean up rating code. The rating system which was eventually removed can be found here: ~/Dropbox/PYTHON-PROGRAMS/FLASK/VOTE-ARCHIVE/VOTE-FINAL-TEMPLATES/VOTE-FINAL |
+| 6/3/22  | Set up new repo and test. Update requirments.txt for a minimal packages.                                                                                                                                                                                                                                                                                                                                                  |
+| 6/2/22  | Add AT&T theme and text after making it into a template. Add accordian. Remove the rating system.                                                                                                                                                                                                                                                                                                                         |
+| 2/20/22 | Registration works, but you have to navigate to it directly and it's not formatted. Add registration link Explore option to add registration at the bottom so it's a one page. Embed video.                                                                                                                                                                                                                               |
+| 2/20/22 | Fixed: You can register when you are logged in. How can a registration system be added to the Login page when it would require to "extensions?"                                                                                                                                                                                                                                                                           |
 
+# Configuration
 
-# Configuration 
 **Python Version**
+
 ```
 $ python --version
 Python 3.10.7
@@ -66,12 +66,15 @@ Python 3.10.7
 ```
 git@github.com:programmingkitchen/bell-labs-vote.git
 ```
+
 **Local PC directory**
+
 ```
 /c/Users/rgran/Dropbox/PYTHON-PROGRAMS/FLASK/BELL-LABS-VOTE
 ```
 
 **Virtual Environment**
+
 ```
 ~/VENV/flask
 ```
@@ -79,7 +82,8 @@ git@github.com:programmingkitchen/bell-labs-vote.git
 # Command Cheats
 
 ## Virtual Environmet Setup (Local PC Version)
-* We are storing the virtual environments in a VENV directory and not naming them with dots.
+
+- We are storing the virtual environments in a VENV directory and not naming them with dots.
 
 ```
 ~/VENV<env-name>
@@ -89,6 +93,7 @@ source ~/VENV/flask/Scripts/activate
 
 deactivate
 ```
+
 ## PIP
 
 ```
@@ -100,7 +105,8 @@ pip install --upgrade pip &&\
 ```
 
 # Examples
-- Startup 
+
+- Startup
 
 ```
 rgran@HPPAVILION-1 MINGW64 ~/VENV/flask
@@ -116,18 +122,17 @@ $ which gunicorn
 
 ```
 
-
-
 # NOTES
+
 - This vote app uses blueprints, but the registration and login system are combined in "auth"
 - The README.md file appears to have the ability to load stylesheets and display checks. See links in the main app.
-- When trying to load these external libraries through a proxy, we might have issues.  For example, we might not get the "checks" from Font Awesome. 
+- When trying to load these external libraries through a proxy, we might have issues. For example, we might not get the "checks" from Font Awesome.
 
 - Fontawesome
 - Bootstrap
 
-
 ## All Imports
+
 ```
 import sys, os
 from flask import Flask, render_template, request, render_template, redirect, url_for, flash, abort
@@ -146,19 +151,20 @@ from wtforms import ValidationError
 # Trouble
 
 ## Accordion not working in Azure App Service but works locally
+
 - Accordian does not expand or collapse
 - Flash messages do not close
 - The "Read More" does open
 - Nothing in the logs
-https://getbootstrap.com/docs/4.1/components/collapse/
+  https://getbootstrap.com/docs/4.1/components/collapse/
 
-- Suspect outbout connectivity to Java Script 
+- Suspect outbout connectivity to Java Script
 
 - We can see the logs for the app
-- No user for ftp 
-Monitoring > Log stream
+- No user for ftp
+  Monitoring > Log stream
 
-**SOLUTION:** Change the url from http to https like below. 
+**SOLUTION:** Change the url from http to https like below.
 
 https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content?utm_source=mozilla&utm_medium=firefox-console-errors&utm_campaign=default
 
@@ -167,13 +173,15 @@ https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content?utm_source=m
     crossorigin="anonymous"></script>
 ```
 
-
 ## Issue running gunicorn on Windows
+
 https://stackoverflow.com/questions/62788628/modulenotfounderror-no-module-named-fcntl
-- We changed back from "application" to "app" and it worked so this is probably because of 
-the docs directory (see below). 
+
+- We changed back from "application" to "app" and it worked so this is probably because of
+  the docs directory (see below).
 
 - original wsgi.py
+
 ```
 #!/usr/bin/python3
 #from voteapp import app
@@ -185,8 +193,9 @@ if __name__ == '__main__':
 ```
 
 ## Docs directory causing errors because it was being inspected
+
 - After removing the docs diretory which was being inspected for files and failing due to errors, changed
-"application" back to "app." 
+  "application" back to "app."
 
 ```
 Generating `gunicorn` command for 'wsgi:app'
@@ -195,7 +204,9 @@ Failed to find attribute 'app' in 'wsgi'.
 ```
 
 ## ORM Error
+
 - Orm error
+
 ```
 /tmp/8db7e2fbe7f632b/antenv/lib/python3.10/site-packages/sqlalchemy/orm/query.py:196: SyntaxWarning: "is not" with a literal. Did you mean "!="?
 ```
