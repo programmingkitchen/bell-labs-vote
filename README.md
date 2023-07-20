@@ -2,8 +2,6 @@
 
 # Summary
 
-Test
-
 - Voting app for use as a demo for Demo.
 
 ## References
