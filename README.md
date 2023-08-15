@@ -3,6 +3,10 @@
 # Summary
 - Voting app for use as a demo for Demo. Test.
 
+## Status
+
+[![Build and deploy Python app to Azure Web App - GranierPythonApp](https://github.com/programmingkitchen/bell-labs-vote/actions/workflows/main_granierpythonapp.yml/badge.svg)](https://github.com/programmingkitchen/bell-labs-vote/actions/workflows/main_granierpythonapp.yml)
+
 
 # Teardown
 - This is configured in Git Hub Actions as the pipeline.
