@@ -8,6 +8,16 @@
 [![Build and deploy Python app to Azure Web App - GranierPythonApp](https://github.com/programmingkitchen/bell-labs-vote/actions/workflows/main_granierpythonapp.yml/badge.svg)](https://github.com/programmingkitchen/bell-labs-vote/actions/workflows/main_granierpythonapp.yml)
 
 
+## TODO
+- Keep this running as part of the Udacity Exercise that includes
+  - 404 Page Not Found Rule
+  - App Service Plan
+  - App Service (Python)
+  - LAW
+  - Action Group for 404 Alerts
+- Instrument the Bell Labs App using the Simple Logger in the Selenium Project and injesting into LAW (manual config). 
+[Collecting logs](https://learn.microsoft.com/en-us/azure/azure-monitor/agents/data-collection-text-log?tabs=portal)
+
 # Teardown
 - This is configured in Git Hub Actions as the pipeline.
 - Manually delete in Azure (Billing)
