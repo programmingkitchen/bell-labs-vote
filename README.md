@@ -1,8 +1,15 @@
 # Bell Labs Vote App
 
 # Summary
-
 - Voting app for use as a demo for Demo. Test.
+
+
+# Teardown
+- This is configured in Git Hub Actions as the pipeline.
+- Manually delete in Azure (Billing)
+- (OPTIONAL).  Delete the action.  Will it rebuild?
+
+
 
 ## References
 
