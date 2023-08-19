@@ -2,14 +2,17 @@
 
 # Summary
 - Voting app for use as a demo for Demo. Test.
+- Azure elements built manually
+- Git Hub Action created manually
+- Keep this running until Udacity Nano Degree complete (as part of the Udacity Exercise)
 
 ## Status
 
 [![Build and deploy Python app to Azure Web App - GranierPythonApp](https://github.com/programmingkitchen/bell-labs-vote/actions/workflows/main_granierpythonapp.yml/badge.svg)](https://github.com/programmingkitchen/bell-labs-vote/actions/workflows/main_granierpythonapp.yml)
 
 
-## TODO
-- Keep this running as part of the Udacity Exercise that includes
+# TODO (Infrastructure)
+- Udacity Exercise that includes
   - 404 Page Not Found Rule
   - App Service Plan
   - App Service (Python)
@@ -23,20 +26,15 @@
 - Manually delete in Azure (Billing)
 - (OPTIONAL).  Delete the action.  Will it rebuild?
 
-
-
 ## References
 
 - Article on configuration of gunicorn and nginx
-
 https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-18-04
 
 # Major Revision Planned
-
 https://openai.com/blog/introducing-chatgpt-and-whisper-apis
 
-## TODO
-
+# TODO (Application)
 1. After voting, the selected radio button stays selected. Make this clear?
    - If you navigate to a different page and come back it goes to the default.
    - If you refresh it stays on the previous choice.
